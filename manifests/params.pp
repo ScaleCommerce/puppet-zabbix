@@ -12,7 +12,7 @@
 #
 class zabbix::params {
   # It seems that ubuntu has an different fping path...
-  case $facts['os']['name'] {
+  case $facts['operatingsystem'] {
     'Ubuntu', 'Debian' : {
       $server_fpinglocation  = '/usr/bin/fping'
       $server_fping6location = '/usr/bin/fping6'
