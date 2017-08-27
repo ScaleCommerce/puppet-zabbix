@@ -32,7 +32,7 @@ class zabbix::repo (
   $zabbix_version = $zabbix::params::zabbix_version,
 ) inherits zabbix::params {
   if ($manage_repo) {
-    case $facts['os']['name'] {
+    case $facts['operatingsystem'] {
       'PSBM'        : {
         $majorrelease = '6'
         $reponame     = $majorrelease
@@ -51,7 +51,7 @@ class zabbix::repo (
       }
     }
 
-    case $facts['os']['family'] {
+    case $facts['osfamily'] {
       'RedHat' : {
         # Zabbix-3.2 and newer RPMs are signed with the GPG key
         if versioncmp($zabbix_version, '3.2') < 0 {
